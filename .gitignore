@@ -1,0 +1,6 @@
+find . -type f | split -l 1000 - batch_
+for f in batch_*; do
+  cat $f | xargs git add
+  git commit -m "Batch commit $f"
+done
+git push
